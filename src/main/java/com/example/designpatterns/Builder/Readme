@@ -1,0 +1,91 @@
+1. Lets suppose we have a student class and the client wants to intialize it's members
+
+How can we do that?
+
+-> Standard way is to go via a Constructor, isn't it?
+
+Now le me give me you a scenario:
+
+-> Assume that the client wants to initialize the Student members partially that means he wants to intialize only name and age and the
+marks is not required for a particular student, how do we solve this case?
+
+you are think right, the constructor in first step requires 3 parameters but we need only 2 here , any thoughts how we can solve this?
+
+---> yes you are right, we can have an another constructor for the same i.e with 2 parameters
+
+you might be thinking Ranjith this is easy-peasy, we know this already, what the heck is builder pattern then.
+
+Calm down my friend.....,
+
+what if i want give you n combinations of the parameters that we might need, don't you think the number
+of constructors will increase.
+
+Now you tell me, how you solve this, PANGA MAT LENA Ranjith se!
+
+Jokes apart :) Think about any datastructure that can help us in resolving this?
+
+Yes you guessed it right, Use HashMap as a parameter in the constructor and pass the required initialization parameters in the map.
+
+Something like HashMap<String,Object> why key is Object here because we can Oject is the super class in java and can be used to deal with all sort of classes like Integer,Double...
+
+This work, but there is an issue.
+
+THINK.............
+
+what happens once you pass this map to the constructor.
+
+we need to initialize the data members
+
+but as you know age is int and name is String
+
+so we need to cast the map.get("name") to String and map.get("age") to Integer
+
+you might ask me what is the issue here?
+
+here you go.... what if the user passes this in the map:
+name : "Ranjith"
+age : 123
+
+the above example works fine
+
+what if an another user passes the below map
+name : "Ranjith"
+age : "hello"
+
+
+Our code will throw run time exception, WHY?
+
+because in the constructor:
+
+we were doing this:
+int age=(Integer)map.get("age")
+
+So this approach is prone to errors
+
+
+How to solve this, here where builder pattern comes handy.
+
+Create Builder class and have the same members as the original student class
+
+and in the client initialize the members like this:
+
+Builder{
+int age;
+String name;
+double marks;
+}
+
+Client:
+Builder b =new Builder();
+b.setAge(1);
+b.setName("Ranjith")
+
+
+Pass this Builder to Student Constructor
+
+Student(Builder b){
+    this.age=b.age;
+    this.name=b.name;
+}
+
+This solves the issue of run time exception isn't it
