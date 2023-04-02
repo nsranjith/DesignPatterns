@@ -89,3 +89,7 @@ Student(Builder b){
 }
 
 This solves the issue of run time exception isn't it
+
+This is what the pattern is, optmised you can check that out.
+
+Don't freak out, optmisation is done to improve the readability and to ensure SOLID principles are in place
