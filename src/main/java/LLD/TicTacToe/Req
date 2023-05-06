@@ -1,0 +1,38 @@
+Tic Tac Toe:
+
+Steps:
+
+-> Align your understanding
+-> What type of system it is ?
+1. Entity
+2. Interactive
+3. Web
+
+
+Interactive:
+
+-> where mutiple users are interacting
+
+Requirement Gathering:
+
+1. A board is present with n*n size
+2. There can be n-1 palyers playing it
+3. Every player will have symbol associated with them
+4. A player can also be a bot
+5. Users can set difficulty while playing with a bot
+6. Players can Undo/Redo
+7. wining strategy
+-> All cols, diagnols and rows
+8. n-1 players are picked by random and the order remain same for the rest of the game
+9. Game is completed til one player is winner or box is full
+
+
+Design patterns:
+
+- For building game with different params ---> GameBuilder Pattern
+- Game winning strategy and Bot difficulty strategy comes under Strategic design pattern as
+we are having different algo for the same use case and the client will decide the implementation
+
+
+
+
