@@ -4,6 +4,7 @@ import LLD.TicTacToe.Exception.InvalidGame;
 import LLD.TicTacToe.Exception.InvalidMove;
 import LLD.TicTacToe.Strategies.GameWinningStrategy;
 import LLD.TicTacToe.Strategies.WinningStrategy;
+import LLD.TicTacToe.factories.WinningStrategyFactory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public class Game {
         return gameWinningStrategy;
     }
 
-    public void setGameWinningStrategy(GameWinningStrategy gameWinningStrategy) {
+    public void setGameWinningStrategy(WinningStrategy gameWinningStrategy) {
         this.gameWinningStrategy = gameWinningStrategy;
     }
 
@@ -93,7 +94,8 @@ public class Game {
             cell.setCellState(CellState.FILLED);
             cell.setPlayer(playerToMove);
             board.getBoard().get(cell.row).set(cell.col, cell);
-            if(gameWinningStrategy.checkWinner(board,cell)){
+            // the factory is insignificanet but we can have RoWinning, ColWinning and DiagnolWinning strategy classes accordingly
+            if(WinningStrategyFactory.getWinningStrategyFor("ROW", board.dimension).checkWinner(board,cell)){
                 this.gameState=GameState.END;
                 winner=playerToMove;
             }
@@ -144,7 +146,7 @@ public class Game {
             game.setNextPlayerIndex(0);
             game.setBoard(new Board(dimensions));
             game.setMoves(new ArrayList<>());
-            game.setGameWinningStrategy(new GameWinningStrategy(dimensions));
+            game.setGameWinningStrategy(WinningStrategyFactory.getWinningStrategyFor("ROW",dimensions));
             return game;
         }
     }

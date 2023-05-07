@@ -8,18 +8,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameWinningStrategy implements  WinningStrategy{
-    List<HashMap<Character,Integer>> rowMap=new ArrayList<>();
-    List<HashMap<Character,Integer>> colMap=new ArrayList<>();
+    static List<HashMap<Character,Integer>> rowMap=new ArrayList<>();
+    static List<HashMap<Character,Integer>> colMap=new ArrayList<>();
     HashMap<Character,Integer> leftDiag=new HashMap<>();
     HashMap<Character,Integer> rightDiag=new HashMap<>();
-
-    public GameWinningStrategy(int dimension) {
+    private static GameWinningStrategy gameWinningStrategy;
+    public static GameWinningStrategy getGameWinningStrategy(int dimension) {
+        if(gameWinningStrategy==null){
+            synchronized (GameWinningStrategy.class){
+                if(gameWinningStrategy==null){
+                    gameWinningStrategy=new GameWinningStrategy();
+                }
+            }
+        }
         for(int i=0;i<dimension;i++){
             HashMap<Character,Integer> rows=new HashMap<>();
             HashMap<Character,Integer> cols=new HashMap<>();
             rowMap.add(rows);
             colMap.add(cols);
         }
+        return gameWinningStrategy;
     }
 
     public boolean isTopLeftDiag(int row, int col){
@@ -30,7 +38,7 @@ public class GameWinningStrategy implements  WinningStrategy{
     }
 
     public boolean isTopRightDiag(int row, int col, int dimension){
-        if((row+col)==dimension){
+        if((row+col)==dimension-1){
             return true;
         }
         return false;

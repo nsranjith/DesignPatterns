@@ -41,6 +41,7 @@ public class Client {
         }
         GameController gameController=new GameController();
         Game game=gameController.creatGame(dimension, playerList);
+
         while (game.getGameState().equals(GameState.INPROGRESS)){
             gameController.displayBoard(game);
             System.out.println("Do you want to undo ? y/n");
