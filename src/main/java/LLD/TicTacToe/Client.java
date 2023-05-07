@@ -48,12 +48,13 @@ public class Client {
             String input=scanner.next();
             if(input.equals("Y")){
                 gameController.undo(game);
+                gameController.makeMove(game);
             }else{
                 gameController.makeMove(game);
 
             }
         }
-        System.out.println("Game  has eneded, Result is: ");
+        System.out.println("Game  has ended, Result is: ");
         if(gameController.getGameStatus(game).equals(GameState.END)){
             System.out.println(gameController.getWinner(game).getName()+" won the game");
         }

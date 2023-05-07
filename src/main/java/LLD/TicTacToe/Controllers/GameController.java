@@ -4,6 +4,7 @@ import LLD.TicTacToe.Exception.InvalidGame;
 import LLD.TicTacToe.Exception.InvalidMove;
 import LLD.TicTacToe.models.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -26,8 +27,15 @@ public class GameController {
     public Player getWinner(Game game){
         return game.getWinner();
     }
-    public void undo(Game game){
+    public void undo(Game game) throws InvalidMove {
+        if(game.getMoves().size()==0){
+            throw new InvalidMove("UNDO is Invalid");
+        }else{
+            game.setBoard(game.getBoards().get(game.getBoards().size()-2));
+            game.getMoves().remove(game.getMoves().size()-1);
+            game.getBoards().remove(game.getBoards().size()-1);
+            System.out.println("Undo completed");
+            game.setNextPlayerIndex(game.getNextPlayerIndex()-1);
+        }
     }
-
-
 }

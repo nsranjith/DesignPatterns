@@ -14,6 +14,27 @@ import java.util.List;
 public class Game {
     Board board;
 
+    List<Player> playerList;
+    List<Move> moves;
+    List<Board> boards;
+    int nextPlayerIndex;
+    Player winner;
+
+    public List<Board> getBoards() {
+        return boards;
+    }
+
+    public void setBoards(List<Board> boards) {
+        this.boards = boards;
+    }
+
+    GameState gameState;
+    WinningStrategy gameWinningStrategy;
+
+    public static Builder getBuilder(){
+        return new Builder();
+    }
+
     public WinningStrategy getGameWinningStrategy() {
         return gameWinningStrategy;
     }
@@ -22,16 +43,6 @@ public class Game {
         this.gameWinningStrategy = gameWinningStrategy;
     }
 
-    List<Player> playerList;
-    List<Move> moves;
-    int nextPlayerIndex;
-    Player winner;
-    GameState gameState;
-    WinningStrategy gameWinningStrategy;
-
-    public static Builder getBuilder(){
-        return new Builder();
-    }
 
     public Board getBoard() {
         return board;
@@ -94,11 +105,12 @@ public class Game {
             cell.setCellState(CellState.FILLED);
             cell.setPlayer(playerToMove);
             board.getBoard().get(cell.row).set(cell.col, cell);
-            // the factory is insignificanet but we can have RoWinning, ColWinning and DiagnolWinning strategy classes accordingly
+            // the factory is insignificant but we can have RoWinning, ColWinning and DiagnolWinning strategy classes accordingly
             if(WinningStrategyFactory.getWinningStrategyFor("ROW", board.dimension).checkWinner(board,cell)){
                 this.gameState=GameState.END;
                 winner=playerToMove;
             }
+            boards.add(new Board(board,board.getDimension()));
         }else{
             throw new InvalidMove("Invalid Move exception");
         }
@@ -144,8 +156,12 @@ public class Game {
             game.setGameState(GameState.INPROGRESS);
             game.setPlayerList(playerList);
             game.setNextPlayerIndex(0);
-            game.setBoard(new Board(dimensions));
+            Board board=new Board(dimensions);
+            game.setBoard(board);
             game.setMoves(new ArrayList<>());
+            ArrayList<Board> boards=new ArrayList<>();
+            boards.add(new Board(board,dimensions));
+            game.setBoards(boards);
             game.setGameWinningStrategy(WinningStrategyFactory.getWinningStrategyFor("ROW",dimensions));
             return game;
         }
