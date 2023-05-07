@@ -49,11 +49,12 @@ public class Client {
                 gameController.undo(game);
             }else{
                 gameController.makeMove(game);
+
             }
         }
         System.out.println("Game  has eneded, Result is: ");
         if(gameController.getGameStatus(game).equals(GameState.END)){
-            System.out.println(gameController.getWinner(game));
+            System.out.println(gameController.getWinner(game).getName()+" won the game");
         }
     }
 }
