@@ -22,24 +22,20 @@ public class HashMap<K, V> {
         if (entries[index] == null) {// if position not occupied
             entries[index] = new Entry<>(key, value);
             size++;
-        } else {
+        }else {
             Entry<K, V> current = entries[index];
-
             while (current != null) {
                 if (current.key.equals(key)) {// if value already present
                     current.value = value;
                     return;
                 }
-
                 current = current.next; // move next
             }
-
             Entry<K, V> newEntry = new Entry<>(key, value);
             newEntry.next = entries[index];
             entries[index] = newEntry;
             size++;
         }
-
         if (size > entries.length * DEFAULT_LOAD_FACTOR) {
             resize();
         }
