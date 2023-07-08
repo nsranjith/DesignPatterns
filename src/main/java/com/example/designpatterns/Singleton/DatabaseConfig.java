@@ -13,7 +13,6 @@ public class DatabaseConfig {
 
     }
     public static DatabaseConfig getInstance(){
-
             if (databaseConfig == null) {
                 synchronized(DatabaseConfig.class) {
                     if (databaseConfig == null)

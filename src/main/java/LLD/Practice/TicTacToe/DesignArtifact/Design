@@ -1,0 +1,60 @@
+1. Inline wth the interviewer
+
+2. Interactive Application
+
+3.
+
+A game can contain a n*n Board
+
+A board contain multiple Cells
+
+A cell can be selected a player
+
+A player can mark a Symbol for the cell
+
+Player whose all symbols gets blocked in an entire row or entire column or diagonal is considered as winner
+
+A player can also undo his move
+
+A player can be Bot or normal player
+
+If the player is Bot moves will be automatic
+
+Game should display the winner
+
+Game:
+Board board
+List<Players> playersList;
+List<Moves> moves;
+Player winner;
+GameState gameState;
+
+Player:
+String name;
+char symbol;
+PlayerType playerType;
+
+Moves:
+Cell cell;
+
+Board:
+int dimesnsion;
+List<List<Cell>> cells
+
+Cell:
+int row;
+int col;
+char symbol;
+Player assignedPlayer;
+CellState cellState;
+
+
+Steps:
+1. Design a controller to BUILD game---> Use Builder pattern here
+2. Make a move for every turn
+3. Check if the player is a winner
+4. Update the curr Game with winner
+5. Since it is intercative app, create a clinet which facilitates the game
+
+
+

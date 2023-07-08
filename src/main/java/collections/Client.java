@@ -5,17 +5,20 @@ import java.util.stream.Collectors;
 
 public class Client{
     public static void main(String[] args) {
-////        List<Integer> list=Arrays.asList(1,2,3,4);
+//        List<Integer> list=Arrays.asList(1,2,3,4);
 ////        List<Integer> out=list.stream().filter(a->a%2==0).collect(Collectors.toList());
 ////        System.out.println(out);
-//        Student student = new Student(1, "Ajith");
-//        Student student1 = new Student(3, "cRanjith");
-//        Student student2 = new Student(2, "Ranjith");
-//        TreeSet<Student> studentSet = new TreeSet<>();
+        Student student = new Student(1, "Ajith");
+        Student student1 = new Student(3, "cRanjith");
+        Student student2 = new Student(2, "Ranjith");
+        TreeSet<Student> studentSet = new TreeSet<>(new AgeComparator());
 ////        List<Student> studentArrayList=new ArrayList(new NameComparator());
-//        studentSet.add(student);
-//        studentSet.add(student1);
-//        studentSet.add(student2);
+        studentSet.add(student);
+        studentSet.add(student1);
+        studentSet.add(student2);
+
+//        Collections.sort(studentSet, new AgeComparator());
+
 //        for (Student s : studentSet) {
 //            System.out.println(s.age + "--" + s.name);
 //        }

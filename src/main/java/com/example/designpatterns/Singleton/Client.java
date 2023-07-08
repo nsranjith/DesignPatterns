@@ -183,7 +183,5 @@ public class Client {
         System.out.println(databaseConfig2.get());
         System.out.println(databaseConfig1.get());
         System.out.println(databaseConfig2.get()==databaseConfig1.get());
-
-
     }
 }

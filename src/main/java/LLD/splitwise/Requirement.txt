@@ -1,0 +1,29 @@
+Users:
+    name
+    age
+    mail
+
+Expense:
+    User createdBy
+    List<Users> participats
+    String currency
+    long amount
+    String description
+    UserExpensePaid paid
+    UserExpenseToPay toPay
+
+UserExpensePaid
+ long uid
+ long eId
+ long amount
+
+UserExpenseToPay
+ long uid
+ long eId
+ long amount
+
+Group
+long id
+String description
+List<Users> users;
+List<Expenses> expenses;

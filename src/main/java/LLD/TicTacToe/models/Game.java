@@ -2,11 +2,8 @@ package LLD.TicTacToe.models;
 
 import LLD.TicTacToe.Exception.InvalidGame;
 import LLD.TicTacToe.Exception.InvalidMove;
-import LLD.TicTacToe.Strategies.GameWinningStrategy;
 import LLD.TicTacToe.Strategies.WinningStrategy;
 import LLD.TicTacToe.factories.WinningStrategyFactory;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +16,8 @@ public class Game {
     List<Board> boards;
     int nextPlayerIndex;
     Player winner;
+    GameState gameState;
+    WinningStrategy gameWinningStrategy;
 
     public List<Board> getBoards() {
         return boards;
@@ -27,9 +26,6 @@ public class Game {
     public void setBoards(List<Board> boards) {
         this.boards = boards;
     }
-
-    GameState gameState;
-    WinningStrategy gameWinningStrategy;
 
     public static Builder getBuilder(){
         return new Builder();
@@ -42,7 +38,6 @@ public class Game {
     public void setGameWinningStrategy(WinningStrategy gameWinningStrategy) {
         this.gameWinningStrategy = gameWinningStrategy;
     }
-
 
     public Board getBoard() {
         return board;
@@ -95,6 +90,7 @@ public class Game {
     public void displayBoard(){
         this.board.display();
     }
+
     public void makeNextMove() throws InvalidMove {
         Player playerToMove=this.playerList.get(nextPlayerIndex);
         System.out.println("Player "+playerToMove.getName() +" is making the move");
