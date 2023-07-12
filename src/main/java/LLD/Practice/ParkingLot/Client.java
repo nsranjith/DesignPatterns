@@ -1,11 +1,10 @@
 package LLD.Practice.ParkingLot;
 
 import LLD.Practice.ParkingLot.dtos.CreateRequestDto;
-import LLD.Practice.ParkingLot.model.Gate;
 import LLD.Practice.ParkingLot.strategy.RandomSpotAssignmentStrategy;
-import LLD.Practice.repositories.ParkingLotRepository;
-import LLD.Practice.repositories.ParkingSpotRepository;
-import LLD.Practice.repositories.TicketRepository;
+import LLD.Practice.ParkingLot.repositories.ParkingLotRepository;
+import LLD.Practice.ParkingLot.repositories.ParkingSpotRepository;
+import LLD.Practice.ParkingLot.repositories.TicketRepository;
 
 public class Client {
     public static void main(String[] args) {

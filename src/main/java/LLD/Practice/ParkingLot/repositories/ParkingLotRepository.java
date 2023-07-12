@@ -1,4 +1,4 @@
-package LLD.Practice.repositories;
+package LLD.Practice.ParkingLot.repositories;
 
 import LLD.Practice.ParkingLot.model.Gate;
 import LLD.Practice.ParkingLot.model.ParkingLot;

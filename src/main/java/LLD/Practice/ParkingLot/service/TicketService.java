@@ -1,13 +1,10 @@
 package LLD.Practice.ParkingLot.service;
 
-import LLD.ParkingLot.repositories.ParkingSlotRepository;
-import LLD.Practice.ParkingLot.dtos.CreateResponseDto;
 import LLD.Practice.ParkingLot.model.*;
-import LLD.Practice.ParkingLot.strategy.RandomSpotAssignmentStrategy;
 import LLD.Practice.ParkingLot.strategy.SpotAssignmentStrategy;
-import LLD.Practice.repositories.ParkingLotRepository;
-import LLD.Practice.repositories.ParkingSpotRepository;
-import LLD.Practice.repositories.TicketRepository;
+import LLD.Practice.ParkingLot.repositories.ParkingLotRepository;
+import LLD.Practice.ParkingLot.repositories.ParkingSpotRepository;
+import LLD.Practice.ParkingLot.repositories.TicketRepository;
 
 import java.util.Date;
 
