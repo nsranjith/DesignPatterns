@@ -3,7 +3,7 @@ package LLD.Practice.snakeAndLadder.models;
 public class HumanPlayer extends Player{
     String name;
 
-    HumanPlayer(String name, char symbol){
+    public HumanPlayer(String name, char symbol){
         super(symbol);
     }
     public Move makeMove(Player player, Dice dice){

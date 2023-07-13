@@ -8,5 +8,4 @@ public class Player extends BaseModel {
     public Player(char symbol) {
         this.symbol=symbol;
     }
-  
 }
