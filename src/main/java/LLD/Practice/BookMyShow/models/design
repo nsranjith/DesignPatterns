@@ -1,0 +1,36 @@
+City:
+
+id name
+
+
+Theatre
+
+id meta city_id
+
+Audi
+
+id meta
+
+
+Show
+
+id aud_id from to movie_id
+
+Seat
+id aud_id
+
+Show_Seat
+
+Show_SeatType
+
+Movie
+
+id meta
+
+Movie_Actor
+
+id castId
+
+Ticket
+id amount
+
